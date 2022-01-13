@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Ghost Unicorns snc. All rights reserved.
+  ~ See LICENSE for license details.
+  -->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Command start -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="ghostunicorns_cms_fallback_import" xsi:type="object">
+                   GhostUnicorns\CmsFallback\Console\Command\ImportCommand
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Command end -->
+
+    <!-- Proxy start -->
+    <type name="GhostUnicorns\CmsFallback\Console\Command\ImportCommand">
+        <arguments>
+            <argument name="appState" xsi:type="object">Magento\Framework\App\State\Proxy</argument>
+            <argument name="import" xsi:type="object">GhostUnicorns\CmsFallback\Model\Import\Proxy</argument>
+        </arguments>
+    </type>
+    <!-- Proxy end -->
+</config>
